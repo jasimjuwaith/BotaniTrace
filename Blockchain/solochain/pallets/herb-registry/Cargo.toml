@@ -1,0 +1,49 @@
+[package]
+name = "pallet-herb-registry"
+version = "0.1.0"
+authors = ["Your Team Name <you@example.com>"]
+edition = "2021"
+license = "MIT"
+description = "Substrate pallet for Ayurvedic herb species registration and compliance tracking"
+repository = "https://github.com/jasimjuwaith/BotaniTrace"
+homepage = "https://github.com/jasimjuwaith/BotaniTrace"
+keywords = ["substrate", "pallet", "herb", "registry", "blockchain"]
+
+[dependencies]
+# FRAME support
+frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50" }
+frame-system  = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50" }
+sp-std        = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50" }
+sp-runtime    = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50" }
+
+# Utilities
+codec         = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
+scale-info    = { version = "2.3", default-features = false, features = ["derive"] }
+
+# Testing & benchmarking
+frame-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50", optional = true }
+sp-inherents  = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50", optional = true }
+
+[features]
+default = ["std"]
+std = [
+    "frame-support/std",
+    "frame-system/std",
+    "sp-std/std",
+    "sp-runtime/std",
+    "codec/std",
+    "scale-info/std",
+]
+
+# Optional benchmarking feature
+benchmarking = [
+    "frame-benchmarking/std",
+    "sp-inherents/std",
+]
+
+[dev-dependencies]
+# Test dependencies
+sp-core      = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.50" }
+
+[workspace]
+members = ["../node", "../runtime", "."]
